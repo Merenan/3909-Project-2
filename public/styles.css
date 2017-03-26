@@ -1,0 +1,203 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 21, 2017, 3:27:11 AM
+    Author     : harveycabaguio
+*/
+
+/* reset */
+body, 
+section, 
+div, 
+h1, 
+h2, 
+h3, 
+p, 
+form, 
+fieldset, 
+input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: stretch;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: #fafafa;
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(0,0,0,0.7);
+}
+
+input { font-family: 'Open Sans', sans-serif; }
+
+#main {
+    position: relative;
+    flex: 1;
+}
+
+#side {
+    flex: 0;
+    width: 20vw;
+    min-width: 200px;
+    padding-top: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    
+    background-color: #00A0E9;
+    
+    color: #fff;
+}
+
+.welcome {
+    position: relative;
+    top: 50%;
+    
+    transform: translateY(-50%);
+    
+    text-align: center;
+}
+
+.card {
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2),
+                0 1px 3px 0 rgba(0,0,0,0.1);
+    
+    color: rgba(0,0,0,0.7);
+}
+.timetable .card {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+    .row {
+        height: 24px;
+    }
+    .row.tall {
+        height: 48px;
+    }
+    .row.var {
+        height: 100%;
+    }
+        #todo input, 
+        #todo input:focus {
+            margin-left: 6px;
+            height: 24px;
+            width: calc(100% - 24px);
+            
+            border: none;
+            outline: none;
+        }
+
+.timetable > .row {
+    display: flex;
+}
+    .col {
+        flex: 1;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    #headers {
+        align-items: flex-end;
+    }
+        
+#fab {
+    position: absolute;
+    display: inline-block;
+    right: 18px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+    z-index: 10000;
+    
+    background-color: #EA4775;
+    border-radius: 24px;
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,0.26),
+                0 10px 20px 0 rgba(0,0,0,0.19);
+    
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+}
+
+#toggleForm { display: none; }
+#toggleForm:checked + #fab {
+    transform: rotate(45deg);
+}
+#formBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: rgba(0,0,0,0.7);
+}
+    #toggleForm:checked + #fab + #formBg {
+        display: block;
+    }
+    #formWindow {
+        display: block;
+        width: 500px;
+        height: auto;
+        overflow: auto;
+    }
+    #formWindow.card {
+        padding-top: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    #formWindow  form > .row {
+        display: flex;
+        align-items: stretch;
+        margin-bottom: 12px;
+    }
+        #days.row { height:auto; }
+        #formWindow .row > label {
+            width: 100px;
+            margin-right: 12px;
+
+            text-align: right;
+            line-height: 24px;
+        }
+        #formWindow .row > label + * { width: calc(100% - 112px); }
+        #formWindow input[type="submit"] {
+            display: block;
+            height: 24px;
+        }
+
+h1 {
+    font-family: 'Open Sans Light', 'Open Sans', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 14.5px;
+    line-height: 24px;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 24px;
+    color: rgba(0,0,0,0.6);
+}
+
+p {
+    font-size: 12px;
+    line-height: 24pt;
+}
