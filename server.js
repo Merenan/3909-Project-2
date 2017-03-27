@@ -1,14 +1,16 @@
 // server.js
 // load the things we need
 var express = require('express');
+var cookieParser = require('cookie-parser')
 var app = express();
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 // set public directory for static files
 app.use(express.static(__dirname + '/public'));
-// use res.render to load up an ejs view file
+app.use(cookieParser('secret'));
 
+// use res.render to load up an ejs view file
 // index page
 app.get('/', function(req, res) {
     // test data
@@ -22,6 +24,11 @@ app.get('/', function(req, res) {
     res.render('index', {
         course: course // passes course as course to index.ejs??
     });
+});
+
+// login page
+app.get('/login', function(req, res) {
+    res.cookie('defUser', '').send(res.render('login')); // sends cookie defUser
 });
 
 app.listen(8080);
