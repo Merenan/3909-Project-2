@@ -8,12 +8,11 @@
     </head>
     <body>
         <!-- change the action, add cookie logic -->
-        <form id="login" action="" method="GET" enctype="text/plain">
+        <p> <%= message %></p>
+        <form id="login" action="/login" method="get" enctype="text/plain">
             <h1>Login</h1>
             <div class="row tall">
                 <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                <%# if no cookie, have blank entry. Else, put username data in the input %>
-                <%  %>
                 <input type="text" name="username" id="username" placeholder="Username" value=""/>
             </div>
             <div class="row tall">
