@@ -77,13 +77,6 @@ dbUtil.connectDB(function (err) {
             }// else
         }// if
 
-        else if (action == "Logout") {
-            req.session.destroy();
-            res.render("login", {
-                message: "Welcome"
-            });
-        }// else
-
         // Action not specified
         else {
             res.render("login", {
@@ -115,24 +108,33 @@ dbUtil.connectDB(function (err) {
     app.post("/", function (req, res) {
         var dayses;
 
-        // Check if the days returned an array or not
-        if (!(req.body.days instanceof Array)) {// Returned int, put into array
-            dayses = [req.body.days];
-        }// if
-        else {// returned array, it's fine to use
-            dayses = req.body.days;
-        }// else
+        if (req.body.action === "Delete") {
+            var coder = req.body.ccode;
+            var db = dbUtil.getDB();
 
-        var db = dbUtil.getDB();
-        db.collection("courses").insert({
-            code: req.body.codes,
-            name: req.body.names,
-            prof: req.body.professors,
-            room: req.body.rooms,
-            time: req.body.times,
-            days: dayses,
-            user: req.session.user
-        });
+            db.collection("courses").deleteMany({ code: coder });
+        }// if(deleting)
+        else {
+            // Check if the days returned an array or not
+            if (!(req.body.days instanceof Array)) {// Returned int, put into array
+                dayses = [req.body.days];
+            }// if
+            else {// returned array, it's fine to use
+                dayses = req.body.days;
+            }// else
+
+            var db = dbUtil.getDB();
+            db.collection("courses").insert({
+                code: req.body.codes,
+                name: req.body.names,
+                prof: req.body.professors,
+                room: req.body.rooms,
+                time: req.body.times,
+                days: dayses,
+                user: req.session.user
+            });
+
+        }// else (not deleting)
 
         // Get all items from given user
         db.collection("courses").find({ user: req.session.user }).toArray(function (err, docs) {
@@ -142,6 +144,7 @@ dbUtil.connectDB(function (err) {
                 });
             }// if
         });// db.collection.find
+
 
     });// app.post
 
