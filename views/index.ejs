@@ -114,6 +114,9 @@
             <h1><%= monthNames[currDate.getMonth()] %></h1>
             <h2><%= dayNames[currDate.getDay()] %></h2>
             <p> Classes today</p>
+            <form class="row tall" method="get" action="/login" name="logout">
+                <input type="submit" name="action" value="Logout">
+            </form>
             <div id="todo" class="card">
                 <h3>Todo</h3>
                 <form class="row" method="get" action="index.jsp" name="addTodo">
