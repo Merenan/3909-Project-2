@@ -77,6 +77,13 @@ dbUtil.connectDB(function (err) {
             }// else
         }// if
 
+        else if (action == "Logout") {
+             req.session.destroy();
+             res.render("login", {
+                 message: "Welcome"
+             });
+         }// else
+
         // Action not specified
         else {
             res.render("login", {
