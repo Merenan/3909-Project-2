@@ -164,7 +164,7 @@ input#create-button {
         #login h1 {
             text-align: center;
         }
-        #login .row.tall {
+        .row.tall {
             display: flex;
             margin-top: 12px;
             margin-bottom: 12px;

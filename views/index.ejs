@@ -7,6 +7,10 @@
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
+        <% var currDate = new Date();
+           var classCounter = 0;
+           var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+           var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; %>
         <section id="main">
             <div class="timetable">
                 <div class="row tall" id="headers">
@@ -23,7 +27,7 @@
                         <div class="col">
                             <% course.forEach(function(course) {
                                for (var j=0; j<course.days.length; j++) {
-                                   if ( course.days[j] == i) { %>
+                                   if (course.days[j] == i) { %>
                                     <div class="card">
                                         <div class="row">
                                             <h3><%= course.code %></h3>
@@ -43,7 +47,13 @@
                                             <input id="button-delete" type="submit" name="action" value="Delete">
                                         </form>
                                     </div>
-                            <% } } }); %>
+                                    <% }
+                                    if (currDate.getDay() == i) {
+                                        if (course.days[j] == currDate.getDay()) {
+                                            classCounter++;
+                                        }
+                                    }
+                            } }); %>
                         </div>
                     <% } %>
                 </div>
@@ -107,13 +117,10 @@
             </div>
         </section>
         <section id="side">
-            <% var currDate = new Date();
-               var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-               var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; %>
             <h1><%= currDate.getDate(); %></h1>
             <h1><%= monthNames[currDate.getMonth()] %></h1>
             <h2><%= dayNames[currDate.getDay()] %></h2>
-            <p> Classes today</p>
+            <p><%= classCounter %> Classes today</p>
             <form class="row tall" method="get" action="/login" name="logout">
                 <input type="submit" name="action" value="Logout">
             </form>
