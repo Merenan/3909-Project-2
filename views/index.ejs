@@ -38,6 +38,10 @@
                                         <div class="row">
                                             <i class="fa fa-clock-o" aria-hidden="true"></i><span><%= course.time %></span>
                                         </div>
+                                        <form method="post" action="/" class="row">
+                                            <input type="hidden" name="ccode" value=<%= course.code %>>
+                                            <input id="button-delete" type="submit" name="action" value="Delete">
+                                        </form>
                                     </div>
                             <% } } }); %>
                         </div>
